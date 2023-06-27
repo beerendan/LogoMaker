@@ -18,9 +18,7 @@ Begin by cloning the code and running npm install. Node packages for 'jest' and 
 ## Usage
 Once all packages are installed, run node index.js in the command line and follow the prompts for text selection, shape and colours for both. The newly generated logo will appear as a .svg file in the main directory.
 
-Screenshot of live project: 
-
-Link to deployed project: 
+Video of live project: https://drive.google.com/file/d/1WMN0yim_sf-0FIYNOpXEVn1RI9oDIcyr/view
 
 Link to project gitHub repository: https://github.com/beerendan/LogoMaker
 
