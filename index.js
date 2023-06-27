@@ -1,14 +1,14 @@
 //Require dependencies and packages
 const inquirer=require("inquirer");
 const jest = require("jest");
-const fs=require("fs");
+const fs=require("fs/promises");
 const SVG = require("./lib/svg");
 
 //For the shapes
 const Triangle=require("./lib/shapes").Triangle;
 const Circle=require("./lib/shapes").Circle;
 const Square=require("./lib/shapes").Square;
-const background= require("./lib/shapes");
+
 
 //Function for logo criteria
 const criteria=()=>{
@@ -68,10 +68,11 @@ function init() {
         svg.setText(answers.text,answers.tColour);
         svg.setShape(background);
         console.log(svg.render());
-        return fs.writeFile("newLogo.svg", svg.render());
+        return fs.writeFile("newLogo.svg",svg.render());
 
     }
     )
+   
 }
 
 
