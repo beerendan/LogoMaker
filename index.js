@@ -62,12 +62,12 @@ function init() {
                     background=new Square();
                     break;
         }
-
+        //Write the  new SVG Logo file
         const svg= new SVG();
         background.setColor(answers.colour);
         svg.setText(answers.text,answers.tColour);
         svg.setShape(background);
-        console.log(svg.render());
+        //console.log(svg.render());
         return fs.writeFile("Logo.svg",svg.render());
 
     }

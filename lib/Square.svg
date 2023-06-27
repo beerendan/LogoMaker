@@ -1,6 +1,0 @@
-<svg width="300" height="200" version="1.1" xmlns="http://www.w3.org/2000/svg">
-
-<rect x="50" y="" width="200" height="200" fill="${this.colour}" />
-
-<text x="10" y="10" text-anchor="middle">${text}</text>
-</svg>
