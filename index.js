@@ -68,7 +68,7 @@ function init() {
         svg.setText(answers.text,answers.tColour);
         svg.setShape(background);
         console.log(svg.render());
-        return fs.writeFile("newLogo.svg",svg.render());
+        return fs.writeFile("Logo.svg",svg.render());
 
     }
     )
