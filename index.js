@@ -1,10 +1,14 @@
-//Require dependencies
+//Require dependencies and packages
 const inquirer=require("inquirer");
 const jest = require("jest");
-const shapes= require("./lib/shapes");
 const fs=require("fs");
-const svg=require("./lib/svg");
 const SVG = require("./lib/svg");
+
+//For the shapes
+const Triangle=require("./lib/shapes").Triangle;
+const Circle=require("./lib/shapes").Circle;
+const Square=require("./lib/shapes").Square;
+const background= require("./lib/shapes");
 
 //Function for logo criteria
 const criteria=()=>{
@@ -42,30 +46,33 @@ const criteria=()=>{
 }
 function init() {
     criteria()
-    //Convert answers to SVG params
+    //Convert answers to SVG properties
     .then((answers)=>{
         let background;
-        switch (shape){
-            case Triangle:
+        switch (answers.shape){
+            case "Triangle":
                 background=new Triangle();
                 break;
                 
-                case Circle:
+                case "Circle":
                 background=new Circle();
                 break;
                 
-                case Square:
+                case "Square":
                     background=new Square();
                     break;
         }
 
         const svg= new SVG();
-        background.setColor(colour);
-        
-        svg.setText(text,tColour);
+        background.setColor(answers.colour);
+        svg.setText(answers.text,answers.tColour);
         svg.setShape(background);
+        console.log(svg.render());
+        return fs.writeFile("newLogo.svg", svg.render());
 
     }
     )
 }
+
+
 init();
