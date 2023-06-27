@@ -1,20 +1,29 @@
 //Require dependencies
+const inquirer=require("inquirer");
 const jest = require("jest");
-const inquirer= require("inquirer");
 const shapes= require("./lib/shapes");
+const fs=require("fs");
+const svg=require("./lib/svg");
+const SVG = require("./lib/svg");
 
 //Function for logo criteria
-function criteria(){
-    inquirer.prompt([
+const criteria=()=>{
+    return inquirer.prompt([
         {
             type:"input",
             message:"Please provide the 3 characters of your desired logo",
             name:"text",
+            validate:(text)=>{
+                if (text.length>3) {
+                    return "Logo max character length must be 3 characters or less"
+                }
+                return true;
+            }
         },
         {
             type:"list",
             message:"What shape would you like your logo background to be?",
-            choices:["Triangle","Square","Circle"],
+            choices:["Triangle","Circle","Square"],
             name:"shape",
         },
         {
@@ -29,5 +38,34 @@ function criteria(){
         },
     ]
     )   
+    
 }
-criteria();
+function init() {
+    criteria()
+    //Convert answers to SVG params
+    .then((answers)=>{
+        let background;
+        switch (shape){
+            case Triangle:
+                background=new Triangle();
+                break;
+                
+                case Circle:
+                background=new Circle();
+                break;
+                
+                case Square:
+                    background=new Square();
+                    break;
+        }
+
+        const svg= new SVG();
+        background.setColor(colour);
+        
+        svg.setText(text,tColour);
+        svg.setShape(background);
+
+    }
+    )
+}
+init();
